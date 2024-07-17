@@ -1,0 +1,714 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+a,
+button {
+  transition: all 0.2s ease;
+  transform: scale(1);
+}
+
+a:active,
+button:active {
+  transform: scale(0.9);
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: #dbcbd6;
+  line-height: 1.4;
+  overflow: hidden;
+  max-width: 414px;
+  margin: auto;
+}
+
+.loader {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-100%);
+  color: #222;
+  transition: all 1.2s ease;
+}
+
+.loader h2 {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+.loaded .loader {
+  transform: translateY(-200%);
+}
+
+.main {
+  background-color: #222;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 1rem 0;
+  border-radius: 2rem;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(100vh);
+  transition: all 1.2s ease;
+}
+
+.loaded .main {
+  transform: translateY(0%);
+  transform-origin: bottom;
+  transition-delay: 0.5s;
+}
+
+.navBar {
+  padding-inline-end: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoBox {
+  width: 10rem;
+  height: auto;
+}
+
+.logoBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.actionBox {
+  display: flex;
+  gap: 1rem;
+}
+
+.actionBox a {
+  display: block;
+  transform: scale(1);
+  transition: all 0.4s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.actionBox a .dmBox {
+  position: absolute;
+  top: -0.7em;
+  right: -0.6em;
+  color: #fff;
+  font-size: 0.5rem;
+  font-weight: bold;
+  width: 16px;
+  height: 15px;
+  border-radius: 50%;
+  background: #fd1d1d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.actionBox a:active {
+  transform: scale(0.95);
+}
+
+.actionBox svg {
+  width: 22px;
+  height: 22px;
+}
+
+.profileData {
+  /* max-width: 414px; */
+  margin: 0 auto;
+  background-color: #222;
+  padding: 1rem;
+  overflow: auto;
+  scrollbar-width: thin;
+  margin-top: -2.5rem;
+}
+
+.profileList {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+}
+
+.profileList .itemBox:nth-child(1) .profileLink .profileImgBox {
+  background: #222 !important;
+}
+
+.profileList .itemBox:nth-child(1) .profileLink {
+  pointer-events: none;
+}
+
+.profileItem {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  /* width: 3rem;
+    height: 3rem; */
+  border-radius: 50%;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  color: #fff;
+}
+
+.itemBox:last-child {
+  padding-inline-end: 1rem;
+}
+
+.profileLink {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  color: #fff;
+  text-decoration: none;
+  transform: scale(1);
+  transition: all 0.4s ease;
+}
+
+.profileLink:active {
+  transform: scale(0.95);
+}
+
+.profileImgBox {
+  width: 3.3rem;
+  height: 3.3rem;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.profileImgBox::after {
+  content: "";
+  position: absolute;
+  width: 3.1rem;
+  height: 3.1rem;
+  background-color: #222;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.profileSvgBox {
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  z-index: 3;
+  padding: 0.4rem;
+  border: 2px solid #222;
+  background: #2a6ab2;
+  width: 1.1rem;
+  height: 1.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  bottom: 2px;
+  right: 0;
+}
+
+.profileImg {
+  border-radius: 50%;
+  width: 2.7rem;
+  height: 2.7rem;
+  z-index: 2;
+  object-fit: contain;
+}
+
+.profileItem p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 65px;
+  font-size: 0.7rem;
+  text-align: center;
+}
+
+.profileLink.visited .profileImgBox {
+  background: rgba(181, 181, 181, 0.587);
+}
+
+.postData {
+  padding: 1rem 0;
+  max-height: calc(100vh - var(--topContentHeight) - 5rem);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+.postData::-webkit-scrollbar {
+  display: none;
+}
+
+.postList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.postList .profileItem {
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+
+.postList .profileImgBox {
+  width: 2.1rem;
+  height: 2.1rem;
+}
+
+.postList .profileImgBox::after {
+  width: 2rem;
+  height: 2rem;
+}
+
+.postList .profileImg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.postList .profileItem {
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.postList .profileItem p {
+  text-align: start;
+  overflow: visible;
+  text-overflow: initial;
+  width: auto;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.postList .itemBox:last-child {
+  padding-inline-end: 0;
+}
+
+.postList .itemBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.postBox img {
+  aspect-ratio: 2/2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.itemBox:nth-child(3n) .postItem .postBox img {
+  aspect-ratio: 9/12;
+}
+
+.postItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.postList .metaBox,
+.postList .postActionBox {
+  padding: 0 1rem;
+  color: #fff;
+}
+
+.postList .metaBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.postList .metaBox > * {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.postList .metaBox p span {
+  font-weight: 600;
+}
+
+.postList .metaBox a {
+  display: inline-block;
+  width: fit-content;
+}
+
+.postList .metaBox .viewComments {
+  opacity: 0.5 !important;
+}
+
+.postList .metaBox p:last-child {
+  font-size: 0.65rem;
+  opacity: 0.5;
+}
+
+.postList .postActionBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.postList .postActionBox a {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+.postList .postActionBox svg {
+  fill: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.postList .postActionBox .likeHeart.liked svg {
+  fill: #fd153f !important;
+  stroke: #fd153f !important;
+}
+
+.postList .postActionBox .postActionLeft a:first-child svg {
+  fill: none;
+}
+
+.postList .postActionBox a:nth-child(3) svg {
+  width: 20px;
+  height: 20px;
+}
+
+.postList .postActionLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.postList .postActionLeft a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loadMoreBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.loadMore {
+  display: flex;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  border: none;
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  transition: all 0.4s ease;
+  opacity: 0.8;
+}
+
+.loadMore:hover {
+  opacity: 1;
+}
+
+.profileItem,
+.postBox,
+.postActionBox,
+.metaBox,
+.profileData {
+  transition: all 0.2s ease;
+}
+
+body.active .profileItem,
+body.active .postBox,
+body.active .postActionBox,
+body.active .metaBox,
+body.active .profileData {
+  background-color: #222;
+  opacity: 0.3;
+}
+
+body.active .postData {
+  overflow-y: hidden;
+}
+
+body.active .commentData.active {
+  transform: translateY(0%);
+}
+
+body.active .postItem {
+  overflow: visible;
+}
+
+.commentData {
+  width: 100%;
+  height: 55%;
+  background-color: #3d3d3d;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-radius: 1.2rem;
+  transform: translateY(100%);
+  transition: all 0.4s ease;
+  opacity: 1;
+  z-index: 9;
+}
+
+.commentData .titleBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid grey;
+}
+
+.commentData .titleBox p {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.commentBoxClose {
+  width: 25px;
+  height: 25px;
+  display: block;
+  color: #fff;
+  cursor: pointer;
+}
+
+.commentBoxClose svg {
+  width: 100%;
+  height: 100%;
+}
+
+.commentList {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  overflow: scroll;
+  scrollbar-width: none;
+  height: 100%;
+  padding-bottom: 5rem;
+}
+
+.commentList::-webkit-scrollbar {
+  display: none;
+}
+
+.commentProfile .profileItem {
+  background: transparent !important;
+  opacity: 1 !important;
+  padding: 0 !important;
+  align-items: flex-start !important;
+}
+
+.commentProfile .profileItem .profileUser {
+  font-size: 0.7rem !important;
+}
+
+.commentData .commentItem,
+.commentData .replyItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.commentData .replyItem:last-child {
+  padding-bottom: 1rem;
+}
+
+.comment {
+  padding-inline-start: calc(33.6px + 0.5rem);
+  margin-top: -2rem;
+  padding-inline-end: 2rem;
+}
+
+.commentInfoLeft {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.3rem;
+}
+
+.commentTimeStamp {
+  font-size: 0.65rem;
+  opacity: 0.5;
+}
+
+.commentInfo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.commentLike {
+  width: 15px;
+  height: 15px;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.commentLike svg {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.commentLikeCount {
+  font-size: 0.55rem;
+}
+
+.commentLike.liked svg {
+  fill: #fd153f !important;
+  stroke: #fd153f !important;
+}
+
+.storyBox {
+  position: absolute;
+  overflow: hidden;
+}
+
+.storyItem {
+  aspect-ratio: 9/16;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  cursor: pointer;
+  background: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.storyItem.active {
+  animation: remove 0.5s ease;
+  pointer-events: none;
+}
+
+@keyframes remove {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.storyItem img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 9/16;
+  max-height: 1080px;
+}
+
+.postList .commentList .storyBox .storyItem {
+  height: 100vh;
+  top: auto;
+}
+
+.profileVerify {
+  display: flex;
+  align-items: center;
+  margin-inline-start: -0.3rem;
+  margin-top: -0.1rem;
+}
+
+.profileVerify svg {
+  width: 17px;
+  height: 17px;
+}
+
+.viewReplyBtn {
+  margin-inline-start: calc(33.6px + 0.5rem + 30px);
+  width: fit-content;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.7rem;
+  color: #fff;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.viewReplyBtn::before {
+  content: "";
+  position: absolute;
+  height: 1.5px;
+  width: 25px;
+  background-color: #fff;
+  opacity: 0.4;
+  left: -30px;
+}
+
+.viewReplyBtn:hover,
+.viewReplyBtn:active {
+  opacity: 1;
+}
+
+.replyList {
+  margin-inline-start: calc(33.6px + 0.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* display: none; */
+}
+
+.replyList.active {
+  display: flex;
+}
